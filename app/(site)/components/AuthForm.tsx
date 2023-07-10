@@ -34,7 +34,7 @@ const AuthForm: React.FC = () => {
   };
   const {
     register,
-    handleSubmit,
+    handleSubmit, 
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
@@ -48,13 +48,14 @@ const AuthForm: React.FC = () => {
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {variant === "REGISTER" && (
-            <Input label="Name" id="name" errors={errors} register={register} />
+            <Input label="Name" id="name" errors={errors} register={register} disabled={isLoading}/>
           )}
           <Input
             label="Email address"
             id="email"
             errors={errors}
             register={register}
+            disabled={isLoading}
           />
           <Input
             label="Password"
@@ -62,6 +63,7 @@ const AuthForm: React.FC = () => {
             type="password"
             errors={errors}
             register={register}
+            disabled={isLoading}
           />
           <Button disabled={isLoading} fullWidth type="submit">
             {variant === "LOGIN" ? "Sign in" : "Register"}
