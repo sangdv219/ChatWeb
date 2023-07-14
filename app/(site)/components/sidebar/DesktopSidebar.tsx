@@ -7,13 +7,12 @@ import { User } from "@prisma/client";
 import Avatar from "../Avatar";
 
 interface DesktopSidebarProps {
-  currentUser?: User;
+  currentUser: User;
 }
 const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("currentUser", { currentUser });
   return (
     <div
       className="

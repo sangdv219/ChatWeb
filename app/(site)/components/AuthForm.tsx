@@ -42,7 +42,7 @@ const AuthForm: React.FC = () => {
           toast.error('Tài khoản này không tồn tại !');
         }
         if(callback?.ok && !callback.error){
-          // toast.success('Logged in!')
+          toast.success('Logged in!')
         }
       }).finally(()=> setIsLoading(false))
     }
@@ -79,8 +79,8 @@ const AuthForm: React.FC = () => {
       console.info('Authencation')
       route.push('/users')
     }    
-  
   }, [session?.status, route]);
+  
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
