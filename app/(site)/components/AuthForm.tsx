@@ -1,14 +1,21 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
+import { toast } from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from "next/navigation";
 import Input from "./Input";
 import Button from "./Button";
 import AuthSocialButton from "./AuthSocialButton";
+
 type Variant = "LOGIN" | "REGISTER";
 
 const AuthForm: React.FC = () => {
+  const session = useSession();
+  const route = useRouter();
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
   const toggleVariant = useCallback(() => {
@@ -22,16 +29,39 @@ const AuthForm: React.FC = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     if (variant === "REGISTER") {
+      axios.post('/api/register', data)
+      .then(() => signIn('credentials', data))
+      .catch(() => toast.error('Something went wrong!'))
+      .finally(() => setIsLoading(false))
     } else if (variant === "LOGIN") {
+      signIn('credentials', {
+        ...data, 
+        redirect: false
+      }).then((callback) => {
+        if(callback?.error){
+          toast.error('Tài khoản này không tồn tại !');
+        }
+        if(callback?.ok && !callback.error){
+          // toast.success('Logged in!')
+        }
+      }).finally(()=> setIsLoading(false))
     }
-    setTimeout(()=>{
-        setIsLoading(false);
-    },3000)
   };
 
   const socialAction = (action: string) => {
     setIsLoading(true);
+    signIn(action, { redirect: false }).then((callback) => {
+      if(callback?.error){
+        toast.error('Invalid Credentials');
+      }
+
+      if(callback?.ok && !callback.error){
+        toast.success('Logged in!');
+        route.push('/users')
+      }
+    }).finally(() => setIsLoading(false))
   };
+
   const {
     register,
     handleSubmit, 
@@ -43,6 +73,14 @@ const AuthForm: React.FC = () => {
       password: "",
     },
   });
+
+  useEffect(() => {
+    if(session?.status === 'authenticated'){
+      console.info('Authencation')
+      route.push('/users')
+    }    
+  
+  }, [session?.status, route]);
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
