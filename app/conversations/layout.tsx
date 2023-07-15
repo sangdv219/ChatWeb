@@ -1,4 +1,4 @@
-import Sidebar from "../(site)/components/sidebar/Sidebar";
+import Sidebar from "../(site)/components/Sidebar/Sidebar";
 import getConversations from "../actions/getConversation";
 import ConversationList from "./Components/ConversationList";
 

@@ -76,7 +76,7 @@ const AuthForm: React.FC = () => {
 
   useEffect(() => {
     if(session?.status === 'authenticated'){
-      console.info('Authencation')
+      console.info('Login success')
       route.push('/users')
     }    
   }, [session?.status, route]);

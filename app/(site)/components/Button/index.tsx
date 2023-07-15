@@ -9,6 +9,7 @@ interface ButtonProps{
     danger?: boolean;
     disabled?: boolean;
 }
+
 const Button:React.FC<ButtonProps> = ({type,fullWidth,children,onClick,secondary,danger,disabled}) => {
     return(
         <button 

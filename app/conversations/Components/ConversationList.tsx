@@ -8,15 +8,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import { MdOutlineGroupAdd } from 'react-icons/md'
 import ConversationBox from './ConversationBox';
+import { User } from '@prisma/client';
 
 interface ConversationListProps{
     initialItems: FullConversationType[]
 }
 const ConversationList:React.FC<ConversationListProps> = ({initialItems}) => {
     const [items, setItems] = useState(initialItems);
-    console.log('items',items)
     const router = useRouter()
-
     const { conversationId, isOpen } = useConversation();
 
     return (  
@@ -34,7 +33,7 @@ const ConversationList:React.FC<ConversationListProps> = ({initialItems}) => {
             `, isOpen ? 'hidden' : 'block w-full left-0'
             )}>
                 <div className='px-5'>
-                    <div className="flex justify-between mb-4 pt-4">
+                    <div className="flex justify-between my-4">
                         <div className="text-2xl font-bold text-neutral-800">
                             Messages
                         </div>
@@ -42,7 +41,7 @@ const ConversationList:React.FC<ConversationListProps> = ({initialItems}) => {
                             <MdOutlineGroupAdd/>
                         </div>
                     </div>
-                    {items.map((item) => (
+                    {items.map((item:any) => (
                         <ConversationBox
                             key={item.id}
                             data={item}

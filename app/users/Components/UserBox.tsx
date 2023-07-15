@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import Avatar from "./Avatar";
+import Avatar from "../../(site)/components/Avatar";
 
 interface UserBoxProps {
   data: User;
@@ -19,8 +19,7 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
         userId: data.id,
       })
       .then((data) => {
-        // router.push(`/conversations/${data.data.id}`);
-        router.push(`/conversations`);
+        router.push(`/conversations/${data.data.id}`);
       })
       .finally(() => setIsLoading(false));
   }, [data, router]);
