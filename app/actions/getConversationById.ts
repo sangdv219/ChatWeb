@@ -18,7 +18,7 @@ const getConversationById = async(conversionId:string) => {
                 users: true
             },
         })
-
+        console.info('conversion',conversion)
         return conversion
     } catch (error) {
         return null

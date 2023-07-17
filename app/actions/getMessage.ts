@@ -14,6 +14,7 @@ const getMessage = async(conversionId:string) => {
                 createdAt:'asc'
             }
         })
+        return message;
     } catch (error) {
         return []
     }
