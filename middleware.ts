@@ -13,4 +13,6 @@ export const config = {
     ]
 }
 
-//text git merge
+// step 1
+// step 2
+// step 3
