@@ -1,7 +1,7 @@
 import Sidebar from "../(site)/components/Sidebar/Sidebar";
 import getConversations from "../actions/getConversation";
 import ConversationList from "./Components/ConversationList";
-// sử dụng hợp nhất code
+// chú thích mới đẩy code vào github của Sáng
 export default async function ConversationLayout({
   children,
 }: {
