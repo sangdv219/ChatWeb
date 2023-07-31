@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import Avatar from "../../(site)/components/Avatar";
+import LoadingModal from "@/app/(site)/components/LoadingModal";
 
 interface UserBoxProps {
   data: User;
@@ -15,7 +16,7 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
   const handleClick = useCallback(() => {
     setIsLoading(true);
     axios
-      .post("/api/conversations", {
+      .post("/api/ ", {
         userId: data.id,
       })
       .then((result) => {
@@ -26,6 +27,8 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
   }, [data, router]);
 
   return (
+    <>
+    {isLoading && (<LoadingModal/>)}
     <div
       className="
             w-full
@@ -55,6 +58,7 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

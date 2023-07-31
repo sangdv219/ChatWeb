@@ -7,6 +7,7 @@ import Link from "next/link";
 import React, { useMemo, useState } from "react";
 import { HiChevronLeft, HiEllipsisHorizontal } from "react-icons/hi2";
 import ProfileDrawer from "./ProfileDrawer";
+import AvatarGroup from "@/app/(site)/components/AvatarGroup";
 
 interface IHeader {
   conversion: Conversation & {
@@ -53,7 +54,8 @@ const Header: React.FC<IHeader> = ({ conversion }) => {
         >
           <HiChevronLeft size={32}/>
         </Link>
-        <Avatar user={otherUser}/>
+        {conversion.isGroup ? (<AvatarGroup users={conversion.users}/>) : (<Avatar user={otherUser}/>)}
+        
         <div className="flex flex-col">
             <div>{conversion.name || otherUser.name}</div>
             <div className="text-sm font-light text-neutral-500">
@@ -63,7 +65,7 @@ const Header: React.FC<IHeader> = ({ conversion }) => {
       </div>
       <HiEllipsisHorizontal
         size={32}
-        onClick={()=> setDrawerOpen(false)}
+        onClick={()=> setDrawerOpen(true)}
         className="
         text-sky-500
         cursor-pointer
