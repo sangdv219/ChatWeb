@@ -1,4 +1,5 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import { pusherServer } from "@/app/libs/pusher";
 import { Prisma } from "@prisma/client";
 import { NextResponse } from "next/server";
 
@@ -39,8 +40,14 @@ export async function DELETE(
             }
         })
 
+        existingConversation.users.forEach((user) => {
+            if(user.email){
+                pusherServer.trigger(user.email, 'conversation:remove', existingConversation)
+            }
+        })
+
         return NextResponse.json(deleteConversation)
     } catch (error:any) {
-        
+        return new NextResponse('Internal Error', { status: 500 } )
     }
 }

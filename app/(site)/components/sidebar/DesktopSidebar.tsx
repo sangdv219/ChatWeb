@@ -67,7 +67,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
             ))}
           </ul>
         </nav>
-        <nav className="mt-4 flex flex-col justify-between items-center">
+        <nav className="flex flex-col justify-between items-center">
           <div
             onClick={() => setIsOpen(true)}
             className="

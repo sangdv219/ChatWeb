@@ -8,6 +8,7 @@ import React, { useMemo, useState } from "react";
 import { HiChevronLeft, HiEllipsisHorizontal } from "react-icons/hi2";
 import ProfileDrawer from "./ProfileDrawer";
 import AvatarGroup from "@/app/(site)/components/AvatarGroup";
+import useActiveList from "@/app/hook/useActiveList";
 
 interface IHeader {
   conversion: Conversation & {
@@ -17,14 +18,17 @@ interface IHeader {
 
 const Header: React.FC<IHeader> = ({ conversion }) => {
   const otherUser = useOtherUser(conversion);
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const { members } = useActiveList()
+  const isActive = members.indexOf(otherUser?.email!) !== -1
   const statusText = useMemo(() => {
     if (conversion.isGroup) {
       return `${conversion.users.length} member`;
     }
 
-    return "Active";
-  }, [conversion]);
+    return isActive ? "Active" : 'Offline';
+  }, [conversion, isActive]);
 
   return (
     <>
