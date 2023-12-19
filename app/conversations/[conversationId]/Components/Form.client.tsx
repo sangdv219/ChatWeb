@@ -4,7 +4,7 @@ import React from 'react'
 import axios from 'axios'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { HiPhoto, HiPaperAirplane } from "react-icons/hi2";
-import MessageInput from './MessageInput';
+import MessageInput from './MessageInput.client';
 import { CldUploadButton } from 'next-cloudinary';
 
 const Form = () => {

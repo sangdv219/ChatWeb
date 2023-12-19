@@ -3,7 +3,7 @@ import prisma from "@/app/libs/prismadb"
 
 const getUser = async () => {
     const session = await getSession();
-
+    console.info('session', session)
     if(!session?.user?.email){
         return [];
     }

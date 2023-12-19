@@ -5,9 +5,9 @@ import React, { Fragment, useMemo, useState } from "react";
 import { format } from "date-fns";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose, IoTrash } from "react-icons/io5";
-import Avatar from "@/app/(site)/components/Avatar";
-import ConfirmModal from "./ConfirmModal";
-import AvatarGroup from "@/app/(site)/components/AvatarGroup";
+import Avatar from "@/app/(site)/components/Avatar.client";
+import ConfirmModal from "./ConfirmModal.client";
+import AvatarGroup from "@/app/(site)/components/AvatarGroup.client";
 import useActiveList from "@/app/hook/useActiveList";
 
 interface IProfileDrawerProps {

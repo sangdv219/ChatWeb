@@ -1,5 +1,5 @@
 import UserList from "./Components/UserList";
-import Sidebar from "../(site)/components/Sidebar/Sidebar";
+import Sidebar from "../(site)/components/sidebar/Sidebar.server";
 import getUser from "../actions/getUsers";
 
 export default async function UsersLayout({children}:{children:React.ReactNode}){

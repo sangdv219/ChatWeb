@@ -3,7 +3,7 @@
 import useConversation from '@/app/hook/useConversation';
 import { FullMessageType } from '@/app/types';
 import React, { useState, useRef, useEffect } from 'react'
-import MessageBox from './MessageBox';
+import MessageBox from './MessageBox.client';
 import axios from 'axios';
 import { pusherClient } from '@/app/libs/pusher';
 import { find } from 'lodash'

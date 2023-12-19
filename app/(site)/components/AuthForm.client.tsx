@@ -1,5 +1,4 @@
 "use client";
-
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
@@ -9,7 +8,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
 import Input from "./Input";
 import Button from "./Button";
-import AuthSocialButton from "./AuthSocialButton";
+import AuthSocialButton from "./AuthSocialButton.client";
 
 type Variant = "LOGIN" | "REGISTER";
 

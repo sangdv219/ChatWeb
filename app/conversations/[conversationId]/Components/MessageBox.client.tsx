@@ -1,13 +1,13 @@
 "use client";
 
-import Avatar from '@/app/(site)/components/Avatar';
+import Avatar from '@/app/(site)/components/Avatar.client';
 import { FullMessageType } from '@/app/types';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { format } from 'date-fns';
 import { useState } from 'react';
-import ImageModal from './ImageModal';
+import ImageModal from './ImageModal.client';
 interface IMessageBox {
     isLast?:boolean
     data: FullMessageType

@@ -2,9 +2,9 @@ import EmptyState from '@/app/(site)/components/EmptyState';
 import getConversationById from '@/app/actions/getConversationById';
 import getMessage from '@/app/actions/getMessage';
 import React from 'react'
-import Header from './Components/Header';
-import Body from './Components/Body';
-import Form from './Components/Form';
+import Header from './Components/Header.client';
+import Body from './Components/Body.client';
+import Form from './Components/Form.client';
 
 interface IParams{
     conversationId: string;

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ToasterContext from "./context/ToasterContext";
 import AuthContext from "./context/AuthContext";
-import ActiveStatus from "./(site)/components/ActiveStatus";
+import ActiveStatus from "./(site)/components/ActiveStatus.client";
 
 const inter = Inter({ subsets: ["latin"] });
 

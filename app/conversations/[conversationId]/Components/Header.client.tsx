@@ -1,5 +1,5 @@
 "use client"; 
-import Avatar from "@/app/(site)/components/Avatar";
+import Avatar from "@/app/(site)/components/Avatar.client";
 import useOtherUser from "@/app/hook/useOtherUser";
 import { FullMessageType } from "@/app/types";
 import { Conversation, User } from "@prisma/client";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import React, { useMemo, useState } from "react";
 import { HiChevronLeft, HiEllipsisHorizontal } from "react-icons/hi2";
 import ProfileDrawer from "./ProfileDrawer";
-import AvatarGroup from "@/app/(site)/components/AvatarGroup";
+import AvatarGroup from "@/app/(site)/components/AvatarGroup.client";
 import useActiveList from "@/app/hook/useActiveList";
 
 interface IHeader {
